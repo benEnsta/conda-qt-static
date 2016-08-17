@@ -1,7 +1,5 @@
-# The language in this case has no bearing - we are going to be making use of conda.
 language: c++
 sudo: false
-
 addons:
   apt:
     sources:
@@ -9,30 +7,24 @@ addons:
     - deadsnakes
     packages:
     - g++-4.8
-
-
 env:
   global:
-    # add ANACONDA_TOKEN
-    secure: kLlW/eFYXyFuxKew0fcE22A2+iaFtBI29wYDCPcAc+xHz8zB2XptVzEP2atH5913nUwKOBCKy7LJM5xcYOi1512HSqUG+DOWZXeQf8fqlVMmrgGa3d5Ck+RirY/kt+jpUBIEH6johlnvphPi3v0iWshZahfXysD+dcikpbVCqc3RU7xHV5dCTGZSG/0UE0rZXh2pV5sfs0JRqpNvGWBQRUu0wv32C6m0PLXeqBK/PTQAB9qzLOKkMWPlx6gaTC8pYtGCq8UWhWC2wMXljgDRdLh9MnTzt9BWIPTYV0xZHkf+Qq8i+m84vM7/Oiq4ZtBuKa+oDf/Wz5uHa3cwiyyph5n2CRTKaAxFJ8NrP9/WEeyGrzlXTpYL8bXzS8T4FTdqnGFf9XGOTcfg85r8LM3bJ/U2MkolRiUgFJF1VnnsagxY9ioyhsGRRkxHN0hbkPJ5IRcCBK5vmo+Koi0/uJIBD4ZcjI/w0qhAYuph6wNlJuOo2sYVM6CdY0oI1dv9emGXD5r+AUyf1RLCq8WGklauRJMVAlxyfxn7VWg/18lD5A8cNYrf4XelDr0l0n0ii5VeurUHewcn93opkES1jvgBLgZ+Inmcm3rEBD/FygLA8vhHSkkOC2SACByFlcYagoEOeblx9O1PKN3WRZUSpDF9tqyf8KKOz/SqS5HXQTWLPLQ=
-
+    # anaconda token
+  - secure: qeb2TVfrbfY+bpU/nuPDKqg48R1wY4Sj2B2gqBJ/BmjuhsvD4yKZpREdEBz8IYVWWTBiPCba4MCJ0r5iZguofCQLkjQYVBVsHZNbmMO6n75psejy3Ske7ezrOxw7ocEzfofM4h+/gPV745o3cJUKduOaESs40q/mQQerJMv+6c9Sz4Z74mRbXMPPGkJISlXn/aJCTa8nOeRZohBPo+2cAHajoUYfdl1wbyZnP8ITSQDAmIZd3SvPjq2k18IEsNqskISw5WqZeTMxReXlT4pPA5gdzi0Klwbw0vCzhq7NhX6SiVu0sYFdKWfAf/HdNf8fFErOBBRfXgs4TCk3gLgw5RiAFVbd2iJHG5y9nv2V4QX5NnG+9pwM1uOtSEeeDBjqeWAWLvJ1dmm2zfwfGzmzcHiWPxv5KSK/70p+anZIfWJ+05WkQ+5WJrLDJEGDb2hMLtU61NYfOYP/u51SPhKez90I+zjD2wYLhNMBtO1YPcv+0ZUue7dzBtVnySnBpIw4HEDD1/OtGUGoMIbXPLmOevASXVI+d+nzcXwmiYgVt9WG6jm/6AIVXfXGi95N/ohAyDrXG3DxIm4FN/pQQtTTn6MnpEMYNrZNiFHkqNYUA4Q9erfPRB0e3waWvCUPRjrzclcD96HJXqyygpzmRewKpE9hdWlwgKupeBpP0P1dU1U=
 matrix:
   include:
-    - os: osx
-      osx_image: xcode7.3
-      env: ACTION="build-all"
-    - os: linux
-      env: ACTION="create-feedstocks-on-merge"
-      compiler: gcc-4.8
-
+  - os: osx
+    osx_image: xcode7.3
+    env: ACTION="build-all"
+  - os: linux
+    env: ACTION="create-feedstocks-on-merge"
+    compiler: gcc-4.8
 script:
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX=g++-4.8 CC=gcc-4.8; fi
-  # - export CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
-  - if [ "$ACTION" = "create-feedstocks-on-merge" ]; then
-      echo "Creating feedstocks from the recipe(s) (this simply lints the recipe if this isn't a merged commit to master).";
-      source ./.CI/create_feedstocks;
-    elif [ "$ACTION" = "build-all" ]; then
-      echo "Building all recipes.";
-      source ./.CI/build_all;
-    fi
-  - conda build --token ${ANACONDA_TOKEN} recipes/qt5 --
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX=g++-4.8 CC=gcc-4.8; fi
+- if [ "$ACTION" = "create-feedstocks-on-merge" ]; then
+    echo "Creating feedstocks   from the recipe(s) (this simply lints the recipe if this isn't a merged commit to  master).";
+    source ./.CI/create_feedstocks;
+  elif [ "$ACTION" = "build-all" ]; then
+    echo "Building all recipes."; source ./.CI/build_all;
+  fi
+- conda build --token ${ANACONDA_TOKEN} recipes/qt5 --
