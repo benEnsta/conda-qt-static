@@ -11,9 +11,9 @@ source:
     # md5: 9a46cce61fc64c20c3ac0a0e0fa41b42
 
 build:
-  # script_env:
-  #   - CC
-  #   - CXX
+  script_env:
+    - CC
+    - CXX
   number: 0
 
 # requirements:
