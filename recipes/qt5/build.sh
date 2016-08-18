@@ -20,7 +20,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   alias gcc="gcc-4.9"
   alias g++="g++-4.9"
   echo $($CC --version)s
-  ../configure -release -opensource -static \
+  CC=gcc-4.9 CXX=g++-4.9 ../configure -release -opensource -static \
                -confirm-license -c++std c++11 \
                -no-mtdev -no-journald \
                -nomake examples -nomake tests \

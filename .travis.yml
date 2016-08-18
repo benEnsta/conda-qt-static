@@ -13,19 +13,19 @@ env:
   - secure: qeb2TVfrbfY+bpU/nuPDKqg48R1wY4Sj2B2gqBJ/BmjuhsvD4yKZpREdEBz8IYVWWTBiPCba4MCJ0r5iZguofCQLkjQYVBVsHZNbmMO6n75psejy3Ske7ezrOxw7ocEzfofM4h+/gPV745o3cJUKduOaESs40q/mQQerJMv+6c9Sz4Z74mRbXMPPGkJISlXn/aJCTa8nOeRZohBPo+2cAHajoUYfdl1wbyZnP8ITSQDAmIZd3SvPjq2k18IEsNqskISw5WqZeTMxReXlT4pPA5gdzi0Klwbw0vCzhq7NhX6SiVu0sYFdKWfAf/HdNf8fFErOBBRfXgs4TCk3gLgw5RiAFVbd2iJHG5y9nv2V4QX5NnG+9pwM1uOtSEeeDBjqeWAWLvJ1dmm2zfwfGzmzcHiWPxv5KSK/70p+anZIfWJ+05WkQ+5WJrLDJEGDb2hMLtU61NYfOYP/u51SPhKez90I+zjD2wYLhNMBtO1YPcv+0ZUue7dzBtVnySnBpIw4HEDD1/OtGUGoMIbXPLmOevASXVI+d+nzcXwmiYgVt9WG6jm/6AIVXfXGi95N/ohAyDrXG3DxIm4FN/pQQtTTn6MnpEMYNrZNiFHkqNYUA4Q9erfPRB0e3waWvCUPRjrzclcD96HJXqyygpzmRewKpE9hdWlwgKupeBpP0P1dU1U=
 matrix:
   include:
-  - os: osx
-    osx_image: xcode7.3
-    compiler: clang
-    env: ACTION="build-all"
+#  - os: osx
+#    osx_image: xcode7.3
+#    compiler: clang
+#    env: ACTION="build-all"
   - os: linux
     env: ACTION="create-feedstocks-on-merge"
-    compiler: gcc48
+    compiler: gcc-4.8
 script:
 # - if [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX=g++-4.8 CC=gcc-4.8; fi
-- if [ "$ACTION" = "create-feedstocks-on-merge" ]; then
-    echo "Creating feedstocks   from the recipe(s) (this simply lints the recipe if this isn't a merged commit to  master).";
-    source ./.CI/create_feedstocks;
-  elif [ "$ACTION" = "build-all" ]; then
-    echo "Building all recipes."; source ./.CI/build_all;
-  fi
-- conda build --token ${ANACONDA_TOKEN} recipes/qt5 --
+#- if [ "$ACTION" = "create-feedstocks-on-merge" ]; then
+  - sh ./recipes/qt5/build.sh;
+
+#  elif [ "$ACTION" = "build-all" ]; then
+#    echo "Building all recipes."; source ./.CI/build_all;
+#  fi
+#- conda build --token ${ANACONDA_TOKEN} recipes/qt5 --
