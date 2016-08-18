@@ -15,12 +15,13 @@ matrix:
   include:
   - os: osx
     osx_image: xcode7.3
+    compiler: clang
     env: ACTION="build-all"
   - os: linux
     env: ACTION="create-feedstocks-on-merge"
-    compiler: gcc-4.8
+    compiler: gcc48
 script:
-- if [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX=g++-4.8 CC=gcc-4.8; fi
+# - if [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX=g++-4.8 CC=gcc-4.8; fi
 - if [ "$ACTION" = "create-feedstocks-on-merge" ]; then
     echo "Creating feedstocks   from the recipe(s) (this simply lints the recipe if this isn't a merged commit to  master).";
     source ./.CI/create_feedstocks;
