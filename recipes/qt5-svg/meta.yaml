@@ -1,11 +1,11 @@
 package:
-    name: qt5
+    name: qt5-svg
     version: 5.7.0
 
 
 source:
-  fn: qtbase-opensource-src-5.7.0.tar.gz
-  url : http://download.qt.io/official_releases/qt/5.7/5.7.0/submodules/qtbase-opensource-src-5.7.0.tar.gz
+  fn: qtsvg-opensource-src-5.7.0.tar.gz
+  url : http://download.qt.io/official_releases/qt/5.7/5.7.0/submodules/qtsvg-opensource-src-5.7.0.tar.gz
   # git_url: https://github.com/benEnsta/conda-qt-static.git
   # git_rev: master
     # url: http://download.qt.io/official_releases/qt/5.7/5.7.0/single/qt-everywhere-opensource-src-5.7.0.tar.gz
@@ -13,17 +13,19 @@ source:
     # md5: 9a46cce61fc64c20c3ac0a0e0fa41b42
 
 build:
-  script_env:
+  # track_features:
+        #  - vc14           [win]
+  # script_env:
     # - CC
     # - CXX
     # - TRAVIS_OS_NAME
-  number: 2
+  number: 1
   # features:
     # - vc14    [win]
 
-# requirements:
-    # build:
-        # - cmake
+requirements:
+    build:
+        - qt5 >=5.7.0
 
 about:
     home: https://wiki.qt.io/Main
