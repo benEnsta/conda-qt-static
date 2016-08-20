@@ -1,0 +1,44 @@
+version: '{build}'
+image: Visual Studio 2015
+platform:
+- x86
+- x64
+environment:
+  # global:
+    # DISTUTILS_USE_SDK: 1
+    # MSSdk: 1
+  conda_token:
+    secure: JHoNjSJ/qEnmDBxTUrryRM/hu5ajQSboycQysdUjVnX8ta/vgvc8ihEnn2zmhPWy
+  BINSTAR_TOKEN:
+    secure: JHoNjSJ/qEnmDBxTUrryRM/hu5ajQSboycQysdUjVnX8ta/vgvc8ihEnn2zmhPWy
+
+
+  matrix:
+  # - CONDA: 27
+  - CONDA: 35
+
+matrix:
+  allow_failures:
+  - platform: x86
+    CONDA: 27
+install:
+#- cmd: '"%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" %PLATFORM%'
+- ps: |
+    if ($env:CONDA) {
+      if ($env:CONDA -eq "27") { $env:CONDA = "" }
+      if ($env:PLATFORM -eq "x64") { $env:CONDA = "$env:CONDA-x64" }
+      $env:PATH = "C:\Miniconda$env:CONDA\;C:\Miniconda$env:CONDA\Scripts\;$env:PATH"
+      conda config --set always_yes yes --set changeps1 no
+      conda config --add channels conda-forge
+      conda update -q conda
+      conda install -q conda-build
+      conda install -q anaconda-client
+      conda install -q conda-build-all
+      conda config --add channels benensta
+
+    }
+build_script:
+- ps: |
+    if ($env:CONDA) {
+      conda-build-all ./recipes --inspect-channels benensta --upload-channels benensta
+    }

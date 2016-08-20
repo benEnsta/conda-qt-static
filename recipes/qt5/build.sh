@@ -1,10 +1,11 @@
 #!/bin/bash
 
 
-tar xzf ./qt-lite.tar.gz
+# tar xzf ./qt-lite.tar.gz
+#
+# cd qt-everywhere-opensource-src-5.7.0
+mkdir -p build
 
-cd qt-everywhere-opensource-src-5.7.0
-mkdir build
 cd build
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
@@ -19,8 +20,8 @@ fi
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   alias gcc="gcc-4.9"
   alias g++="g++-4.9"
-  echo $($CC --version)s
-  CC=gcc-4.9 CXX=g++-4.9 ../configure -release -opensource -static \
+  echo $(gcc --version)
+  ../configure -release -opensource -static \
                -confirm-license -c++std c++11 \
                -no-mtdev -no-journald \
                -nomake examples -nomake tests \
