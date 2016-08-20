@@ -1,0 +1,35 @@
+From a140e20d2bff8039b43bed854066d8bade77ce21 Mon Sep 17 00:00:00 2001
+From: bdesroch <bdesroch@laas.fr>
+Date: Mon, 15 Aug 2016 10:46:39 +0200
+Subject: [PATCH] [master] add install cmd@
+
+---
+ viewer/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/viewer/CMakeLists.txt b/viewer/CMakeLists.txt
+index b29d8ad..15f45c7 100644
+--- a/viewer/CMakeLists.txt
++++ b/viewer/CMakeLists.txt
+@@ -73,6 +73,9 @@ ADD_EXECUTABLE(${VIBES_viewer_EXE} WIN32 MACOSX_BUNDLE ${VIBes_viewer_SOURCES} $
+ # Qt5 Modules
+ QT5_USE_MODULES(${VIBES_viewer_EXE} Widgets Gui Core Network Svg)
+ 
++# install exec
++INSTALL(TARGETS ${VIBES_viewer_EXE} DESTINATION bin)
++
+ # Packaging
+ IF(APPLE)
+     IF(NOT QT_BINARY_DIR)
+@@ -90,7 +93,7 @@ IF(APPLE)
+ 
+     # Copy API files
+     install(FILES ../client-api/C/vibes.h ../client-api/C/vibes.c DESTINATION "Vibes C")
+-    install(DIRECTORY ../client-api/C/examples DESTINATION "Vibes C")
++    # install(DIRECTORY ../client-api/C/examples DESTINATION "Vibes C")
+ 
+     install(DIRECTORY ../client-api/C++/src DESTINATION "Vibes C++")
+     install(DIRECTORY ../client-api/C++/examples DESTINATION "Vibes C++")
+-- 
+1.9.5 (Apple Git-50.3)
+

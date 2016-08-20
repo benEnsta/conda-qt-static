@@ -1,0 +1,22 @@
+From a9c7e82e818c33b7ae65562a00b2b93788a94b60 Mon Sep 17 00:00:00 2001
+From: Benoit DESROCHERS <ben.ensta@gmail.com>
+Date: Sat, 20 Aug 2016 18:03:48 +0200
+Subject: [PATCH] [master] add install in .pro
+
+---
+ viewer/viewer.pro | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/viewer/viewer.pro b/viewer/viewer.pro
+index 7f48e76..19eafbf 100644
+--- a/viewer/viewer.pro
++++ b/viewer/viewer.pro
+@@ -26,3 +26,5 @@ contains(CONFIG, static): {
+            DEFINES += _USE_qsvg
+        }
+    }
++target.path = $$PREFIX/bin
++INSTALLS += target
+-- 
+2.7.4
+

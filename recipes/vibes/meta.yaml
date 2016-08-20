@@ -1,0 +1,75 @@
+package:
+  name: vibes
+  version: "0.2.0a1"
+
+source:
+  url: https://github.com/ENSTABretagneRobotics/VIBES/archive/master.zip
+  patches:
+    - fix_install.patch
+    - install.patch
+
+build:
+  # script_env:
+  #   - CC
+  #   - CXX
+  number: 0
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyibex = pyibex:main
+    #
+    # Would create an entry point called pyibex that calls pyibex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - qt5
+    - qt5-svg
+    - cmake >=2.8.12
+
+  # run:
+    # - qt5
+
+test:
+  # Python imports
+  # imports:
+    # - pyibex
+  #   - pyibex.examples
+  #   - pyibex.geometry
+  #   - pyibex.polar
+
+  commands:
+    - echo $(pwd)
+    # - python -m unittest discover -v pyibex.tests
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ENSTABretagneRobotics/VIBES
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  license_file: LICENSE
+  summary: 'PyIbex a python interface of ibexlib '
+
+extra:
+  recipe-maintainers:
+    # Always check with the people listed below if they are OK becoming maintainers of the recipe. (There will be spam!)
+    - BenEnsta
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
