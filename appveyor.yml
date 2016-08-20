@@ -40,5 +40,9 @@ install:
 build_script:
 - ps: |
     if ($env:CONDA) {
-      conda-build-all ./recipes --inspect-channels benensta --upload-channels benensta
+      Try {
+        conda-build-all ./recipes --inspect-channels benensta --upload-channels benensta
+      }Finally{
+        $Time=Get-Date
+      }
     }
