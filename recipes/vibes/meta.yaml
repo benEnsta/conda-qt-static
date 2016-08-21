@@ -12,7 +12,8 @@ build:
   # script_env:
   #   - CC
   #   - CXX
-  number: 0
+  number: 0 [win]
+  number: 1 [linux]
 # build:
   # noarch_python: True
   # preserve_egg_dir: True

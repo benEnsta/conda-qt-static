@@ -9,5 +9,6 @@ conda config --set show_channel_urls true
 conda config --add channels conda-forge
 conda install --yes --quiet conda-build
 conda install --yes --quiet anaconda-client
+conda install --yes --quiet conda-build-all
 
 rm -rf ./recipes/example
