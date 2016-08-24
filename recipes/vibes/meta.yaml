@@ -1,19 +1,15 @@
 package:
   name: vibes
-  version: "0.2.0a1"
+  version: "0.2rc2"
 
 source:
-  url: https://github.com/ENSTABretagneRobotics/VIBES/archive/master.zip
-  patches:
-    - fix_install.patch
-    - install.patch
+  fn: vibes-0.2rc2.tar.gz
+  url: https://testpypi.python.org/packages/0a/d4/c568c6ad23c72019966c155fc55f8416663470f32ed8de19e31958125106/vibes-0.2rc2.tar.gz
+  md5: 3334c8f9df7e6457d0fdb71a970ac49c
+#  patches:
+   # List any patch files here
+   # - fix.patch
 
-build:
-  # script_env:
-  #   - CC
-  #   - CXX
-  number: 0 [win]
-  number: 1 [linux]
 # build:
   # noarch_python: True
   # preserve_egg_dir: True
@@ -21,9 +17,9 @@ build:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pyibex = pyibex:main
+    # - vibes = vibes:main
     #
-    # Would create an entry point called pyibex that calls pyibex.main()
+    # Would create an entry point called vibes that calls vibes.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -32,24 +28,18 @@ build:
 
 requirements:
   build:
-    - qt5
-    - qt5-svg
-    - cmake >=2.8.12
+    - python
+    - setuptools
 
-  # run:
-    # - qt5
+  run:
+    - python
 
 test:
   # Python imports
-  # imports:
-    # - pyibex
-  #   - pyibex.examples
-  #   - pyibex.geometry
-  #   - pyibex.polar
+  imports:
+    - vibes
 
-  commands:
-    - echo $(pwd)
-    # - python -m unittest discover -v pyibex.tests
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -62,15 +52,10 @@ test:
     # - nose
 
 about:
-  home: https://github.com/ENSTABretagneRobotics/VIBES
-  license: GNU Lesser General Public License v3 or later (LGPLv3+)
-  license_file: LICENSE
-  summary: 'PyIbex a python interface of ibexlib '
-
+  home: http://enstabretagnerobotics.github.io/VIBES/
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'python Api for VIbes (VIsualizer for Intervals and Boxes)'
 extra:
   recipe-maintainers:
     # Always check with the people listed below if they are OK becoming maintainers of the recipe. (There will be spam!)
-    - BenEnsta
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
+    - BenEnsta <ben.ensta@gmail.com>

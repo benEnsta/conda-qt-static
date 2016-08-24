@@ -44,7 +44,5 @@ build_script:
         conda-build-all ./recipes --inspect-channels benensta --upload-channels benensta
       }Catch [Management.Automation.RemoteException] {
         $Time=Get-Date
-      }Finally{
-        $Time=Get-Date
       }
     }

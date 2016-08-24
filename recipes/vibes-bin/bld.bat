@@ -1,4 +1,12 @@
-"%PYTHON%" setup.py install
+cd viewer
+
+@ECHO ON
+
+call "%CONDA_PREFIX%"\bin\qmake.exe PREFIX="%CONDA_PREFIX%\Library"
+
+call nmake
+
+call nmake install
 if errorlevel 1 exit 1
 
 :: Add more build steps here, if they are necessary.

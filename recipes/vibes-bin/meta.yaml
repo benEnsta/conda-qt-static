@@ -1,0 +1,50 @@
+package:
+  name: vibes-bin
+  version: "0.2.0a1"
+
+source:
+  url: https://github.com/ENSTABretagneRobotics/VIBES/archive/master.zip
+  patches:
+    - fix_install.patch
+    - install.patch
+
+build:
+  number: 0 [win]
+  number: 0 [linux]
+
+requirements:
+  build:
+    - qt5
+    - qt5-svg
+    - cmake >=2.8.12
+
+
+test:
+
+  commands:
+    - echo $(pwd)
+    # - python -m unittest discover -v pyibex.tests
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ENSTABretagneRobotics/VIBES
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  license_file: LICENSE
+  summary: 'PyIbex a python interface of ibexlib '
+
+extra:
+  recipe-maintainers:
+    # Always check with the people listed below if they are OK becoming maintainers of the recipe. (There will be spam!)
+    - BenEnsta <ben.ensta@gmail.com>
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -12,7 +12,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
              -no-mtdev -no-journald \
              -nomake examples -nomake tests \
              --prefix=${CONDA_PREFIX} \
-             -platform macx-xcode;
+             -platform macx-g++;
 fi
 
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
