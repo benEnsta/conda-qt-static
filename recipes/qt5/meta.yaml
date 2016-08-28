@@ -22,9 +22,10 @@ build:
   # features:
     # - vc14    [win]
 
-# requirements:
-    # build:
-        # - cmake
+requirements:
+  build:
+    - gcc >= 4.8 [osx]
+
 
 about:
     home: https://wiki.qt.io/Main
