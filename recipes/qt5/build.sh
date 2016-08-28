@@ -7,12 +7,19 @@
 
 # export TRAVIS_OS_NAME=linux
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    ./configure -release -opensource -static \
+    export MACOSX_DEPLOYMENT_TARGET=10.7
+    ./configure -release -opensource -static -c++std c++11 \
              -confirm-license  \
              -no-mtdev -no-journald \
              -nomake examples -nomake tests \
-             --prefix=${CONDA_PREFIX} \
-             -platform macx-g++;
+             -qt-libpng \
+             -qt-libjpeg \
+             -qt-freetype \
+             -qt-pcre \
+             -no-rpath \
+             -no-dbus \
+             --prefix=${CONDA_PREFIX} -v ;
+            #  -platform macx-g++;
 fi
 
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
