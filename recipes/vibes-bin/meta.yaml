@@ -1,20 +1,19 @@
 package:
   name: vibes-bin
-  version: "0.2.0a1"
+  version: "0.2.0a2"
 
 source:
   url: https://github.com/ENSTABretagneRobotics/VIBES/archive/master.zip
-  patches:
-    - fix_install.patch
-    - install.patch
+#  patches:
+#    - fix_install.patch
+#    - install.patch
 
 build:
-  number: 0 [win]
-  number: 0 [linux]
+  number: 0
 
 requirements:
   build:
-    - qt5
+    - qt5 >=5.7.1
     - qt5-svg
     - cmake >=2.8.12
 
@@ -39,7 +38,7 @@ about:
   home: https://github.com/ENSTABretagneRobotics/VIBES
   license: GNU Lesser General Public License v3 or later (LGPLv3+)
   license_file: LICENSE
-  summary: 'PyIbex a python interface of ibexlib '
+  summary: 'Visualizer for Intervals and Boxes'
 
 extra:
   recipe-maintainers:

@@ -1,19 +1,19 @@
 package:
     name: qt5
-    version: 5.7.0
+    version: 5.7.1
 
 
 source:
-  fn: qtbase-opensource-src-5.7.0.tar.gz
-  url : http://download.qt.io/official_releases/qt/5.7/5.7.0/submodules/qtbase-opensource-src-5.7.0.tar.gz
+  fn: qtbase-opensource-src-5.7.1.tar.gz
+  url : http://download.qt.io/official_releases/qt/5.7/5.7.1/submodules/qtbase-opensource-src-5.7.1.tar.gz
 
 build:
   script_env:
     # - CC
     # - CXX
     - TRAVIS_OS_NAME [not win]
-  number: 2 [win]
-  number: 3 [not win]
+  number: 1
+
   # features:
     # - vc14    [win]
 

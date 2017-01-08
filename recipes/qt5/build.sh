@@ -8,7 +8,7 @@
 # export TRAVIS_OS_NAME=linux
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export MACOSX_DEPLOYMENT_TARGET=10.7
-    ./configure -release -opensource -static -c++std c++11 \
+    ./configure -release -opensource -static -platform macx-clang \
              -confirm-license  \
              -no-mtdev -no-journald \
              -nomake examples -nomake tests \
@@ -26,7 +26,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   # tric to use gcc-4.9 compiller
   # wget -L https://github.com/benEnsta/conda-qt-static/blob/master/recipes/qt5/g++-base.conf -O mkspec/common/g++-base.conf
   ./configure -release -opensource -static \
-               -confirm-license -c++std c++11 \
+               -confirm-license \
                -no-mtdev -no-journald \
                -nomake examples -nomake tests \
                -qt-xcb --prefix=${CONDA_PREFIX} -no-icu -v;
