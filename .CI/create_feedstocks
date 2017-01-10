@@ -7,7 +7,7 @@ wget https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obviou
 python bootstrap-obvious-ci-and-miniconda.py ~/miniconda x64 3 --without-obvci && source ~/miniconda/bin/activate root
 conda config --set show_channel_urls true
 conda config --add channels conda-forge
-conda install --yes --quiet conda-build
+conda install --yes --quiet conda-build=2.0.1
 conda install --yes --quiet anaconda-client
 conda install --yes --quiet conda-build-all
 
