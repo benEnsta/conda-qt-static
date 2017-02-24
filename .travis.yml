@@ -32,4 +32,4 @@ script:
    echo "Building all recipes."; source ./.CI/build_all;
  fi
 - conda config --add channels benensta
-- conda-build-all ./recipes --inspect-channels benensta --upload-channels benensta
+- conda-build-all ./recipes/vibes --inspect-channels benensta --upload-channels benensta

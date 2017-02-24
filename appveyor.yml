@@ -41,7 +41,7 @@ build_script:
 - ps: |
     if ($env:CONDA) {
       Try {
-        conda-build-all ./recipes --inspect-channels benensta --upload-channels benensta
+        conda-build-all ./recipes/vibes --inspect-channels benensta --upload-channels benensta
       }Catch [Management.Automation.RemoteException] {
         $Time=Get-Date
       }

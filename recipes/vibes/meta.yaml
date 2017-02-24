@@ -1,17 +1,17 @@
 package:
   name: vibes
-  version: "0.2rc2"
+  version: "0.2.2"
 
 source:
-  fn: vibes-0.2rc2.tar.gz
-  url: https://testpypi.python.org/packages/0a/d4/c568c6ad23c72019966c155fc55f8416663470f32ed8de19e31958125106/vibes-0.2rc2.tar.gz
-  md5: 3334c8f9df7e6457d0fdb71a970ac49c
+  fn: vibes-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/20/3a/c19179d02310793aae928682a6435f97fe57e892f057048f1624b3675474/vibes-0.2.2.tar.gz
+  md5: 560b1e8e5e7fad97a731c2b6f576bf17
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # noarch_python: True
+#build:
+  #noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -55,7 +55,11 @@ about:
   home: http://enstabretagnerobotics.github.io/VIBES/
   license: GNU General Public License v3 or later (GPLv3+)
   summary: 'python Api for VIbes (VIsualizer for Intervals and Boxes)'
+  license_family: GPL3
 extra:
   recipe-maintainers:
     # Always check with the people listed below if they are OK becoming maintainers of the recipe. (There will be spam!)
     - BenEnsta <ben.ensta@gmail.com>
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
